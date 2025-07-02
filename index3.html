@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator Sederhana</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f2f3f5;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .container {
+      background-color: rgb(206, 108, 239);
+      display: inline-block;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    input {
+      width: 200px;
+      height: 30px;
+      margin: 10px 0;
+      font-size: 16px;
+      text-align: center;
+      border-radius: 20px;
+    }
+
+    button {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    #hasil {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2> KALKULATOR MINI </h2>
+    <input type="number" id="bil1" placeholder="Bilangan 1"><br>
+    <input type="number" id="bil2" placeholder="Bilangan 2"><br>
+
+    <button onclick="hitung('+')">+</button>
+    <button onclick="hitung('-')">-</button>
+    <button onclick="hitung('*')">x</button>
+    <button onclick="hitung('/')">/</button>
+    <button onclick="clearInput()">C</button>
+
+    <div id="hasil">.......</div>
+  </div>
+
+  <script>
+    function hitung(operator) {
+      var bil1 = parseFloat(document.getElementById("bil1").value);
+      var bil2 = parseFloat(document.getElementById("bil2").value);
+      var hasil = 0;
+
+      if (isNaN(bil1) || isNaN(bil2)) {
+        document.getElementById("hasil").innerText = "ISI KEDUANYA COKK";
+        return;
+      }
+
+      switch(operator) {
+        case '+':
+          hasil = bil1 + bil2;
+          break;
+        case '-':
+          hasil = bil1 - bil2;
+          break;
+        case '*':
+          hasil = bil1 * bil2;
+          break;
+        case '/':
+          hasil = bil2 !== 0 ? bil1 / bil2 : "Tidak bisa bagi 0";
+          break;
+      }
+
+      document.getElementById("hasil").innerText = "Hasil: " + hasil;
+    }
+
+    function clearInput() {
+      document.getElementById("bil1").value = "";
+      document.getElementById("bil2").value = "";
+      document.getElementById("hasil").innerText = "";
+    }
+  </script>
+</body>
+</html>
